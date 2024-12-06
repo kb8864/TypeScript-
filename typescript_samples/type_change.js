@@ -1,0 +1,7 @@
+"use strict";
+const num = "10"; // 文字列を代入
+const answer = Number(num);
+console.log(answer);
+const message = 123; // 数字を代入
+const greeting = String(message);
+console.log(greeting);
