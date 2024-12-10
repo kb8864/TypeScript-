@@ -1,5 +1,8 @@
 "use strict";
+// const random: number = Math.random();
+// const dice: number = Math.floor(random * 6 + 1);
+// console.log(dice);
 Object.defineProperty(exports, "__esModule", { value: true });
-const random = Math.random();
-const dice = Math.floor(random * 6 + 1);
-console.log(dice);
+let count = 1;
+count++;
+console.log(count);
