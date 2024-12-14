@@ -1,27 +1,31 @@
-const seed: string[] = [
-  'A',
-  'B',
-  'C',
-  'a',
-  'b',
-  'c',
-  '1',
-  '2',
-  '3',
-  '!',
-  '@',
-  '#',
-  '&',
+const uppercase: string[] = ['A', 'B', 'C'];
+const lowercase: string[] = ['a', 'b', 'c'];
+const numbers: string[] = ['0', '1', '2', '3', '4'];
+const symbols: string[] = ['!', '@', '#', '&'];
+
+const allCharacters: string[] = [
+  ...uppercase,
+  ...lowercase,
+  ...numbers,
+  ...symbols,
 ];
 
 //パラメータをコマンドラインから受け取れるようにする
-const password_lenght: number = Number(process.argv[2]);
-let password: string = '';
-let random: number;
+const passwordLenght: number = Number(process.argv[2]);
+let password: string[] = [];
+// 各カテゴリから1文字ずつ追加
+password.push(uppercase[Math.floor(Math.random() * uppercase.length)]);
+password.push(lowercase[Math.floor(Math.random() * lowercase.length)]);
+password.push(numbers[Math.floor(Math.random() * numbers.length)]);
+password.push(symbols[Math.floor(Math.random() * symbols.length)]);
 
-for (let i: number = 0; i < password_lenght; i++) {
-  //プロパティの上限値を使って、配列の値を増やせるようする
-  random = Math.floor(Math.random() * seed.length);
-  password += seed[random];
+// 残りの文字数をランダムに選択
+for (let i = 4; i < passwordLenght; i++) {
+  const randomChar =
+    allCharacters[Math.floor(Math.random() * allCharacters.length)];
+  password.push(randomChar);
 }
-console.log(password);
+// パスワードをシャッフルする
+password = password.sort(() => Math.random() - 0.5);
+
+console.log(password.join(''));
